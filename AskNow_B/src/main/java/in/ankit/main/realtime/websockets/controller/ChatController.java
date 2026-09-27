@@ -1,0 +1,29 @@
+package in.ankit.main.realtime.websockets.controller;
+
+
+import org.springframework.messaging.handler.annotation.MessageMapping;
+import org.springframework.messaging.handler.annotation.SendTo;
+import org.springframework.messaging.simp.SimpMessagingTemplate;
+import org.springframework.stereotype.Controller;
+
+import in.ankit.main.realtime.websockets.model.ChatMessage;
+
+@Controller
+public class ChatController {
+
+    private final SimpMessagingTemplate messagingTemplate;
+
+    public ChatController(SimpMessagingTemplate messagingTemplate) {
+        this.messagingTemplate = messagingTemplate;
+    }
+
+    @MessageMapping("/chatmessage")
+    public void sendMessage(ChatMessage message) {
+
+        messagingTemplate.convertAndSendToUser(
+                message.getReceiver(),
+                "/queue/messages",
+                message
+        );
+    }
+}
