@@ -56,6 +56,9 @@ public class SecurityConfig {
                     // AI (optional)
                     .requestMatchers("/asknow/api/ai/**").permitAll()
 
+                    // Health check
+                    .requestMatchers("/", "/health").permitAll()
+
                     // Everything else requires JWT
                     .anyRequest().authenticated()
             )
