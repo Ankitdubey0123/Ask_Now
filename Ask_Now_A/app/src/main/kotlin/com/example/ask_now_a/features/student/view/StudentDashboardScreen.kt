@@ -69,7 +69,8 @@ fun StudentDashboardScreen(
                 )
                 2 -> StudentProfileTab(
                     name = name,
-                    email = email
+                    email = email,
+                    onLogout = onLogout
                 )
             }
         }

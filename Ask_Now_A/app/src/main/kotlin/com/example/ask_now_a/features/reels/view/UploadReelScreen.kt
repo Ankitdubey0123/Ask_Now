@@ -1,5 +1,9 @@
 package com.example.ask_now_a.features.reels.view
 
+import android.content.Context
+import android.net.Uri
+import androidx.activity.compose.rememberLauncherForActivityResult
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
@@ -17,6 +21,7 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import com.example.ask_now_a.core.components.TagChip
@@ -30,14 +35,27 @@ fun UploadReelScreen(
     reelViewModel: ReelViewModel,
     onBack: () -> Unit
 ) {
+    val context = LocalContext.current
     val uiState by reelViewModel.uiState.collectAsState()
 
     var title by remember { mutableStateOf("") }
     var description by remember { mutableStateOf("") }
     var selectedTag by remember { mutableStateOf("#ProblemSolving") }
-    var selectedVideoPath by remember { mutableStateOf<String?>(null) }
+    var selectedVideoUri by remember { mutableStateOf<Uri?>(null) }
+    var selectedVideoName by remember { mutableStateOf<String?>(null) }
+    var validationError by remember { mutableStateOf<String?>(null) }
 
     val categoryTags = listOf("#ProblemSolving", "#CourseAd", "#Solution", "#TipsAndTricks")
+
+    val videoPickerLauncher = rememberLauncherForActivityResult(
+        contract = ActivityResultContracts.GetContent()
+    ) { uri: Uri? ->
+        uri?.let {
+            selectedVideoUri = it
+            selectedVideoName = it.lastPathSegment ?: "video.mp4"
+            validationError = null
+        }
+    }
 
     LaunchedEffect(uiState.uploadSuccess) {
         if (uiState.uploadSuccess) {
@@ -75,7 +93,7 @@ fun UploadReelScreen(
                     .background(CardSurface)
                     .border(1.dp, PrimaryPurple.copy(alpha = 0.5f), RoundedCornerShape(20.dp))
                     .clickable {
-                        selectedVideoPath = "/sdcard/sample_problem_reel.mp4"
+                        videoPickerLauncher.launch("video/*")
                     },
                 contentAlignment = Alignment.Center
             ) {
@@ -83,8 +101,8 @@ fun UploadReelScreen(
                     Icon(Icons.Default.VideoCall, contentDescription = "Video", tint = PrimaryPurple, modifier = Modifier.size(54.dp))
                     Spacer(modifier = Modifier.height(8.dp))
                     Text(
-                        text = if (selectedVideoPath != null) "Video File Selected: sample_problem_reel.mp4" else "Tap to Select Video File (MP4)",
-                        color = if (selectedVideoPath != null) AccentEmerald else TextMuted,
+                        text = if (selectedVideoName != null) "Video Selected: $selectedVideoName" else "Tap to Select Video File (Gallery / Camera)",
+                        color = if (selectedVideoName != null) AccentEmerald else TextMuted,
                         style = MaterialTheme.typography.bodyMedium
                     )
                 }
@@ -146,8 +164,13 @@ fun UploadReelScreen(
 
             Button(
                 onClick = {
-                    if (title.isNotBlank()) {
-                        val file = File(selectedVideoPath ?: "/sdcard/sample.mp4")
+                    if (title.isBlank()) {
+                        validationError = "Please enter a title for the reel"
+                    } else if (selectedVideoUri == null) {
+                        validationError = "Please select a video file to upload"
+                    } else {
+                        validationError = null
+                        val file = uriToFile(context, selectedVideoUri!!)
                         reelViewModel.uploadReel(title, description, selectedTag, file)
                     }
                 },
@@ -163,10 +186,25 @@ fun UploadReelScreen(
                 }
             }
 
+            validationError?.let { err ->
+                Spacer(modifier = Modifier.height(12.dp))
+                Text(err, color = AccentRose, style = MaterialTheme.typography.bodyMedium)
+            }
+
             uiState.error?.let { error ->
                 Spacer(modifier = Modifier.height(12.dp))
                 Text(error, color = AccentRose, style = MaterialTheme.typography.bodyMedium)
             }
         }
     }
+}
+
+private fun uriToFile(context: Context, uri: Uri): File {
+    val file = File(context.cacheDir, "upload_reel_${System.currentTimeMillis()}.mp4")
+    context.contentResolver.openInputStream(uri)?.use { inputStream ->
+        file.outputStream().use { outputStream ->
+            inputStream.copyTo(outputStream)
+        }
+    }
+    return file
 }

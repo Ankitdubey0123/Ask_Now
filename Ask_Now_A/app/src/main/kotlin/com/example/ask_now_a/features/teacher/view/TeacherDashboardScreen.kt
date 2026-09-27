@@ -71,7 +71,8 @@ fun TeacherDashboardScreen(
                 )
                 2 -> TeacherProfileTab(
                     name = name,
-                    email = email
+                    email = email,
+                    onLogout = onLogout
                 )
             }
         }

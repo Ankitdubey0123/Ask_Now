@@ -2,8 +2,8 @@ package com.example.ask_now_a.core.network
 
 object ApiEndpoints {
 
-    // Server Base URL (Defaults to LAN IP 10.254.91.109 for real devices / emulators)
-    var baseUrl: String = "http://10.254.91.109:8080/asknow/api"
+    // Server Base URL (Production Render Cloud Deployment)
+    var baseUrl: String = "https://ask-now.onrender.com/asknow/api"
 
     // AUTH
     const val LOGIN = "auth/login"

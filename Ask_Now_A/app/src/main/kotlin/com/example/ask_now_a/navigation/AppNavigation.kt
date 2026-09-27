@@ -200,6 +200,7 @@ fun AppNavigation(
                 chatViewModel = chatViewModel,
                 recipientId = recipientId,
                 recipientName = recipientName,
+                currentUserId = authState.userId ?: 0,
                 onBack = { navController.popBackStack() }
             )
         }

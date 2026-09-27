@@ -7,11 +7,10 @@ import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Email
+import androidx.compose.material.icons.filled.ExitToApp
 import androidx.compose.material.icons.filled.Person
 import androidx.compose.material.icons.filled.School
-import androidx.compose.material3.Icon
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Text
+import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -24,7 +23,8 @@ import com.example.ask_now_a.core.theme.*
 @Composable
 fun TeacherProfileTab(
     name: String,
-    email: String
+    email: String,
+    onLogout: () -> Unit
 ) {
     Column(
         modifier = Modifier
@@ -90,6 +90,19 @@ fun TeacherProfileTab(
                     Text(email.ifEmpty { "teacher@email.com" }, style = MaterialTheme.typography.bodyLarge, color = TextWhite)
                 }
             }
+        }
+
+        Spacer(modifier = Modifier.height(32.dp))
+
+        Button(
+            onClick = onLogout,
+            colors = ButtonDefaults.buttonColors(containerColor = AccentRose),
+            modifier = Modifier.fillMaxWidth().height(52.dp),
+            shape = RoundedCornerShape(16.dp)
+        ) {
+            Icon(Icons.Default.ExitToApp, contentDescription = "Logout", tint = TextWhite)
+            Spacer(modifier = Modifier.width(8.dp))
+            Text("Logout", color = TextWhite, fontWeight = FontWeight.Bold)
         }
     }
 }

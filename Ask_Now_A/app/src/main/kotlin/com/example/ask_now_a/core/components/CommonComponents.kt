@@ -10,10 +10,13 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.automirrored.filled.ArrowForward
+import androidx.compose.material.icons.automirrored.filled.Logout
 import androidx.compose.material.icons.filled.*
 import androidx.compose.material.icons.outlined.*
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -25,6 +28,7 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.ask_now_a.core.theme.*
+import kotlinx.coroutines.launch
 
 data class NavigationTabItem(
     val title: String,
@@ -81,7 +85,12 @@ fun AppScaffold(
                         )
                     },
                     navigationIcon = {
-                        IconButton(onClick = { /* Drawer toggle handled in view */ }) {
+                        val scope = rememberCoroutineScope()
+                        IconButton(onClick = {
+                            scope.launch {
+                                if (drawerState.isClosed) drawerState.open() else drawerState.close()
+                            }
+                        }) {
                             Icon(Icons.Default.Menu, contentDescription = "Menu", tint = TextWhite)
                         }
                     },
@@ -154,286 +163,81 @@ fun AppDrawer(
     Column(
         modifier = Modifier
             .fillMaxHeight()
-            .width(280.dp)
+            .width(300.dp)
             .background(CardSurface)
-            .padding(16.dp)
-    ) {
-        // Gradient User Profile Header
-        Box(
-            modifier = Modifier
-                .fillMaxWidth()
-                .clip(RoundedCornerShape(20.dp))
-                .background(
-                    Brush.horizontalGradient(
-                        colors = listOf(PrimaryPurple, SecondaryCyan)
-                    )
-                )
-                .padding(20.dp)
-        ) {
-            Column {
-                Box(
-                    modifier = Modifier
-                        .size(54.dp)
-                        .clip(CircleShape)
-                        .background(TextWhite.copy(alpha = 0.2f)),
-                    contentAlignment = Alignment.Center
-                ) {
-                    Icon(
-                        imageVector = Icons.Default.Person,
-                        contentDescription = "User",
-                        tint = TextWhite,
-                        modifier = Modifier.size(32.dp)
-                    )
-                }
-                Spacer(modifier = Modifier.height(12.dp))
-                Text(
-                    text = name,
-                    style = MaterialTheme.typography.titleLarge,
-                    color = TextWhite,
-                    fontWeight = FontWeight.Bold
-                )
-                Text(
-                    text = email,
-                    style = MaterialTheme.typography.bodyMedium,
-                    color = TextWhite.copy(alpha = 0.8f)
-                )
-            }
-        }
-
-        Spacer(modifier = Modifier.height(24.dp))
-
-        // Drawer Menu Items
-        items.forEach { item ->
-            Row(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .clip(RoundedCornerShape(12.dp))
-                    .clickable { item.onClick() }
-                    .padding(horizontal = 16.dp, vertical = 12.dp),
-                verticalAlignment = Alignment.CenterVertically
-            ) {
-                Icon(
-                    imageVector = item.icon,
-                    contentDescription = item.title,
-                    tint = PrimaryPurple,
-                    modifier = Modifier.size(22.dp)
-                )
-                Spacer(modifier = Modifier.width(16.dp))
-                Text(
-                    text = item.title,
-                    style = MaterialTheme.typography.bodyLarge,
-                    color = TextWhite,
-                    fontWeight = FontWeight.Medium
-                )
-            }
-            Spacer(modifier = Modifier.height(4.dp))
-        }
-
-        Spacer(modifier = Modifier.weight(1f))
-
-        HorizontalDivider(color = BorderSlate)
-        Spacer(modifier = Modifier.height(16.dp))
-
-        // Logout Row
-        Row(
-            modifier = Modifier
-                .fillMaxWidth()
-                .clip(RoundedCornerShape(12.dp))
-                .clickable { onLogout() }
-                .padding(horizontal = 16.dp, vertical = 12.dp),
-            verticalAlignment = Alignment.CenterVertically
-        ) {
-            Icon(
-                imageVector = Icons.Default.ExitToApp,
-                contentDescription = "Logout",
-                tint = AccentRose,
-                modifier = Modifier.size(22.dp)
-            )
-            Spacer(modifier = Modifier.width(16.dp))
-            Text(
-                text = "Logout",
-                style = MaterialTheme.typography.bodyLarge,
-                color = AccentRose,
-                fontWeight = FontWeight.Bold
-            )
-        }
-    }
-}
-
-@Composable
-fun GradientBanner(
-    title: String,
-    subtitle: String,
-    icon: ImageVector,
-    gradientColors: List<Color>,
-    onClick: () -> Unit
-) {
-    Box(
-        modifier = Modifier
-            .fillMaxWidth()
-            .clip(RoundedCornerShape(20.dp))
-            .background(Brush.horizontalGradient(gradientColors))
-            .clickable { onClick() }
             .padding(20.dp)
     ) {
+        // Drawer Header
         Row(
-            verticalAlignment = Alignment.CenterVertically
+            verticalAlignment = Alignment.CenterVertically,
+            modifier = Modifier.padding(vertical = 16.dp)
         ) {
             Box(
                 modifier = Modifier
-                    .size(48.dp)
+                    .size(52.dp)
                     .clip(CircleShape)
-                    .background(TextWhite.copy(alpha = 0.2f)),
+                    .background(PrimaryPurple),
                 contentAlignment = Alignment.Center
             ) {
-                Icon(
-                    imageVector = icon,
-                    contentDescription = title,
-                    tint = TextWhite,
-                    modifier = Modifier.size(28.dp)
+                Text(
+                    text = if (name.isNotBlank()) name.take(1).uppercase() else "U",
+                    color = TextWhite,
+                    style = MaterialTheme.typography.titleLarge,
+                    fontWeight = FontWeight.Bold
                 )
             }
 
-            Spacer(modifier = Modifier.width(16.dp))
+            Spacer(modifier = Modifier.width(14.dp))
 
             Column(modifier = Modifier.weight(1f)) {
                 Text(
-                    text = title,
+                    text = name,
                     style = MaterialTheme.typography.titleMedium,
                     fontWeight = FontWeight.Bold,
-                    color = TextWhite
-                )
-                Spacer(modifier = Modifier.height(4.dp))
-                Text(
-                    text = subtitle,
-                    style = MaterialTheme.typography.bodyMedium,
-                    color = TextWhite.copy(alpha = 0.8f)
-                )
-            }
-
-            Icon(
-                imageVector = Icons.Default.ChevronRight,
-                contentDescription = "Go",
-                tint = TextWhite,
-                modifier = Modifier.size(24.dp)
-            )
-        }
-    }
-}
-
-@Composable
-fun ActionCard(
-    title: String,
-    subtitle: String,
-    icon: ImageVector,
-    accentColor: Color,
-    modifier: Modifier = Modifier,
-    onClick: () -> Unit
-) {
-    Box(
-        modifier = modifier
-            .fillMaxWidth()
-            .clip(RoundedCornerShape(16.dp))
-            .background(CardSurface)
-            .border(1.dp, BorderSlate, RoundedCornerShape(16.dp))
-            .clickable { onClick() }
-            .padding(16.dp)
-    ) {
-        Row(verticalAlignment = Alignment.CenterVertically) {
-            Box(
-                modifier = Modifier
-                    .size(42.dp)
-                    .clip(CircleShape)
-                    .background(accentColor.copy(alpha = 0.15f)),
-                contentAlignment = Alignment.Center
-            ) {
-                Icon(
-                    imageVector = icon,
-                    contentDescription = title,
-                    tint = accentColor,
-                    modifier = Modifier.size(24.dp)
-                )
-            }
-
-            Spacer(modifier = Modifier.width(12.dp))
-
-            Column(modifier = Modifier.weight(1f)) {
-                Text(
-                    text = title,
-                    style = MaterialTheme.typography.bodyLarge,
-                    fontWeight = FontWeight.Bold,
-                    color = TextWhite
+                    color = TextWhite,
+                    maxLines = 1,
+                    overflow = TextOverflow.Ellipsis
                 )
                 Spacer(modifier = Modifier.height(2.dp))
                 Text(
-                    text = subtitle,
-                    style = MaterialTheme.typography.bodyMedium,
+                    text = email,
+                    style = MaterialTheme.typography.bodySmall,
                     color = TextMuted,
                     maxLines = 1,
                     overflow = TextOverflow.Ellipsis
                 )
             }
         }
-    }
-}
 
-@Composable
-fun StatCard(
-    title: String,
-    value: String,
-    icon: ImageVector,
-    color: Color,
-    modifier: Modifier = Modifier
-) {
-    Box(
-        modifier = modifier
-            .clip(RoundedCornerShape(16.dp))
-            .background(CardSurface)
-            .border(1.dp, color.copy(alpha = 0.3f), RoundedCornerShape(16.dp))
-            .padding(16.dp)
-    ) {
-        Column {
-            Row(
-                verticalAlignment = Alignment.CenterVertically,
-                horizontalArrangement = Arrangement.SpaceBetween,
-                modifier = Modifier.fillMaxWidth()
-            ) {
-                Icon(imageVector = icon, contentDescription = title, tint = color, modifier = Modifier.size(26.dp))
-                Text(
-                    text = value,
-                    style = MaterialTheme.typography.titleLarge,
-                    color = color,
-                    fontWeight = FontWeight.Bold
-                )
-            }
-            Spacer(modifier = Modifier.height(12.dp))
-            Text(
-                text = title,
-                style = MaterialTheme.typography.bodyMedium,
-                color = TextMuted
+        HorizontalDivider(color = BorderSlate, thickness = 1.dp)
+
+        Spacer(modifier = Modifier.height(16.dp))
+
+        // Drawer Menu Items
+        items.forEach { item ->
+            NavigationDrawerItem(
+                label = { Text(item.title, color = TextWhite, fontWeight = FontWeight.Medium) },
+                selected = false,
+                onClick = item.onClick,
+                icon = { Icon(item.icon, contentDescription = item.title, tint = SecondaryCyan) },
+                colors = NavigationDrawerItemDefaults.colors(unselectedContainerColor = Color.Transparent)
             )
+            Spacer(modifier = Modifier.height(4.dp))
         }
-    }
-}
 
-@Composable
-fun TagChip(
-    text: String,
-    isSelected: Boolean = false,
-    onClick: (() -> Unit)? = null
-) {
-    Box(
-        modifier = Modifier
-            .clip(RoundedCornerShape(20.dp))
-            .background(if (isSelected) PrimaryPurple else CardSurface)
-            .border(1.dp, if (isSelected) PrimaryPurple else BorderSlate, RoundedCornerShape(20.dp))
-            .then(if (onClick != null) Modifier.clickable { onClick() } else Modifier)
-            .padding(horizontal = 14.dp, vertical = 6.dp)
-    ) {
-        Text(
-            text = text,
-            style = MaterialTheme.typography.labelMedium,
-            color = if (isSelected) TextWhite else TextMuted
+        Spacer(modifier = Modifier.weight(1f))
+
+        HorizontalDivider(color = BorderSlate, thickness = 1.dp)
+
+        Spacer(modifier = Modifier.height(16.dp))
+
+        // Logout Button
+        NavigationDrawerItem(
+            label = { Text("Logout", color = AccentRose, fontWeight = FontWeight.Bold) },
+            selected = false,
+            onClick = onLogout,
+            icon = { Icon(Icons.AutoMirrored.Filled.Logout, contentDescription = "Logout", tint = AccentRose) },
+            colors = NavigationDrawerItemDefaults.colors(unselectedContainerColor = Color.Transparent)
         )
     }
 }
@@ -441,44 +245,126 @@ fun TagChip(
 @Composable
 fun LoadingView(message: String = "Loading...") {
     Box(
-        modifier = Modifier.fillMaxSize(),
+        modifier = Modifier.fillMaxSize().background(DarkBackground),
         contentAlignment = Alignment.Center
     ) {
         Column(horizontalAlignment = Alignment.CenterHorizontally) {
             CircularProgressIndicator(color = PrimaryPurple)
             Spacer(modifier = Modifier.height(16.dp))
-            Text(text = message, style = MaterialTheme.typography.bodyMedium, color = TextMuted)
+            Text(message, color = TextMuted, style = MaterialTheme.typography.bodyMedium)
         }
     }
 }
 
 @Composable
-fun ErrorView(
-    message: String,
-    onRetry: () -> Unit
-) {
+fun StatCard(title: String, value: String, icon: ImageVector, color: Color) {
     Box(
         modifier = Modifier
-            .fillMaxSize()
-            .padding(24.dp),
-        contentAlignment = Alignment.Center
+            .fillMaxWidth()
+            .clip(RoundedCornerShape(16.dp))
+            .background(CardSurface)
+            .border(1.dp, BorderSlate, RoundedCornerShape(16.dp))
+            .padding(16.dp)
     ) {
-        Column(horizontalAlignment = Alignment.CenterHorizontally) {
-            Icon(Icons.Default.ErrorOutline, contentDescription = "Error", tint = AccentRose, modifier = Modifier.size(54.dp))
-            Spacer(modifier = Modifier.height(16.dp))
-            Text(
-                text = message,
-                style = MaterialTheme.typography.bodyLarge,
-                color = TextWhite,
-                fontWeight = FontWeight.Medium
-            )
-            Spacer(modifier = Modifier.height(20.dp))
-            Button(
-                onClick = onRetry,
-                colors = ButtonDefaults.buttonColors(containerColor = PrimaryPurple)
+        Row(verticalAlignment = Alignment.CenterVertically) {
+            Box(
+                modifier = Modifier
+                    .size(48.dp)
+                    .clip(CircleShape)
+                    .background(color.copy(alpha = 0.2f)),
+                contentAlignment = Alignment.Center
             ) {
-                Text("Retry", color = TextWhite)
+                Icon(icon, contentDescription = title, tint = color, modifier = Modifier.size(26.dp))
+            }
+            Spacer(modifier = Modifier.width(14.dp))
+            Column {
+                Text(value, style = MaterialTheme.typography.titleLarge, fontWeight = FontWeight.Bold, color = TextWhite)
+                Spacer(modifier = Modifier.height(2.dp))
+                Text(title, style = MaterialTheme.typography.bodyMedium, color = TextMuted)
             }
         }
+    }
+}
+
+@Composable
+fun ActionCard(title: String, subtitle: String, icon: ImageVector, accentColor: Color, onClick: () -> Unit) {
+    Box(
+        modifier = Modifier
+            .fillMaxWidth()
+            .clip(RoundedCornerShape(18.dp))
+            .background(CardSurface)
+            .border(1.dp, BorderSlate, RoundedCornerShape(18.dp))
+            .clickable { onClick() }
+            .padding(18.dp)
+    ) {
+        Row(verticalAlignment = Alignment.CenterVertically) {
+            Box(
+                modifier = Modifier
+                    .size(46.dp)
+                    .clip(CircleShape)
+                    .background(accentColor.copy(alpha = 0.2f)),
+                contentAlignment = Alignment.Center
+            ) {
+                Icon(icon, contentDescription = title, tint = accentColor, modifier = Modifier.size(24.dp))
+            }
+            Spacer(modifier = Modifier.width(14.dp))
+            Column(modifier = Modifier.weight(1f)) {
+                Text(title, style = MaterialTheme.typography.titleMedium, fontWeight = FontWeight.Bold, color = TextWhite)
+                Spacer(modifier = Modifier.height(2.dp))
+                Text(subtitle, style = MaterialTheme.typography.bodySmall, color = TextMuted)
+            }
+            Icon(Icons.Default.ChevronRight, contentDescription = "Go", tint = TextMuted)
+        }
+    }
+}
+
+@Composable
+fun GradientBanner(title: String, subtitle: String, icon: ImageVector, gradientColors: List<Color>, onClick: () -> Unit) {
+    Box(
+        modifier = Modifier
+            .fillMaxWidth()
+            .clip(RoundedCornerShape(20.dp))
+            .background(Brush.horizontalGradient(colors = gradientColors))
+            .clickable { onClick() }
+            .padding(20.dp)
+    ) {
+        Row(verticalAlignment = Alignment.CenterVertically) {
+            Box(
+                modifier = Modifier
+                    .size(52.dp)
+                    .clip(CircleShape)
+                    .background(Color.White.copy(alpha = 0.2f)),
+                contentAlignment = Alignment.Center
+            ) {
+                Icon(icon, contentDescription = title, tint = TextWhite, modifier = Modifier.size(28.dp))
+            }
+            Spacer(modifier = Modifier.width(16.dp))
+            Column(modifier = Modifier.weight(1f)) {
+                Text(title, style = MaterialTheme.typography.titleMedium, fontWeight = FontWeight.Bold, color = TextWhite)
+                Spacer(modifier = Modifier.height(4.dp))
+                Text(subtitle, style = MaterialTheme.typography.bodyMedium, color = TextWhite.copy(alpha = 0.9f))
+            }
+            Icon(Icons.AutoMirrored.Filled.ArrowForward, contentDescription = "Open", tint = TextWhite)
+        }
+    }
+}
+
+@Composable
+fun TagChip(text: String, isSelected: Boolean, onClick: (() -> Unit)? = null) {
+    Box(
+        modifier = Modifier
+            .clip(RoundedCornerShape(20.dp))
+            .background(if (isSelected) PrimaryPurple else CardSurface)
+            .border(1.dp, if (isSelected) PrimaryPurple else BorderSlate, RoundedCornerShape(20.dp))
+            .then(if (onClick != null) Modifier.clickable { onClick() } else Modifier)
+            .padding(horizontal = 14.dp, vertical = 8.dp),
+        contentAlignment = Alignment.Center
+    ) {
+        Text(
+            text = text,
+            color = if (isSelected) TextWhite else TextMuted,
+            fontWeight = if (isSelected) FontWeight.Bold else FontWeight.Medium,
+            fontSize = 13.sp
+        )
     }
 }

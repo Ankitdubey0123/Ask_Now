@@ -36,6 +36,7 @@ fun AuthScreen(
     var name by remember { mutableStateOf("") }
     var email by remember { mutableStateOf("") }
     var password by remember { mutableStateOf("") }
+    var selectedRole by remember { mutableStateOf("STUDENT") }
     var passwordVisible by remember { mutableStateOf(false) }
 
     LaunchedEffect(uiState.isLoggedIn, uiState.role) {
@@ -85,7 +86,7 @@ fun AuthScreen(
                     color = TextMuted
                 )
 
-                Spacer(modifier = Modifier.height(24.dp))
+                Spacer(modifier = Modifier.height(20.dp))
 
                 AnimatedVisibility(visible = !isLoginMode) {
                     Column {
@@ -100,10 +101,53 @@ fun AuthScreen(
                                 focusedBorderColor = PrimaryPurple,
                                 unfocusedBorderColor = BorderSlate,
                                 focusedTextColor = TextWhite,
-                                unfocusedTextColor = TextWhite
+                                unfocusedTextColor = TextWhite,
+                                focusedContainerColor = DarkBackground,
+                                unfocusedContainerColor = DarkBackground
                             ),
                             shape = RoundedCornerShape(16.dp)
                         )
+                        Spacer(modifier = Modifier.height(12.dp))
+
+                        // Role Selector
+                        Text("Select Account Type", style = MaterialTheme.typography.bodyMedium, color = TextWhite, fontWeight = FontWeight.SemiBold)
+                        Spacer(modifier = Modifier.height(6.dp))
+                        Row(
+                            modifier = Modifier.fillMaxWidth(),
+                            horizontalArrangement = Arrangement.spacedBy(10.dp)
+                        ) {
+                            Button(
+                                onClick = { selectedRole = "STUDENT" },
+                                modifier = Modifier.weight(1f).height(44.dp),
+                                shape = RoundedCornerShape(12.dp),
+                                colors = ButtonDefaults.buttonColors(
+                                    containerColor = if (selectedRole == "STUDENT") PrimaryPurple else DarkBackground
+                                )
+                            ) {
+                                Text("Student", color = TextWhite, fontWeight = FontWeight.Bold)
+                            }
+
+                            Button(
+                                onClick = { selectedRole = "TEACHER" },
+                                modifier = Modifier.weight(1f).height(44.dp),
+                                shape = RoundedCornerShape(12.dp),
+                                colors = ButtonDefaults.buttonColors(
+                                    containerColor = if (selectedRole == "TEACHER") PrimaryPurple else DarkBackground
+                                )
+                            ) {
+                                Text("Teacher", color = TextWhite, fontWeight = FontWeight.Bold)
+                            }
+                        }
+
+                        if (selectedRole == "TEACHER") {
+                            Spacer(modifier = Modifier.height(6.dp))
+                            Text(
+                                "Note: Teacher accounts require admin verification and a scheduled orientation interview.",
+                                style = MaterialTheme.typography.bodySmall,
+                                color = AccentAmber
+                            )
+                        }
+
                         Spacer(modifier = Modifier.height(14.dp))
                     }
                 }
@@ -120,7 +164,9 @@ fun AuthScreen(
                         focusedBorderColor = PrimaryPurple,
                         unfocusedBorderColor = BorderSlate,
                         focusedTextColor = TextWhite,
-                        unfocusedTextColor = TextWhite
+                        unfocusedTextColor = TextWhite,
+                        focusedContainerColor = DarkBackground,
+                        unfocusedContainerColor = DarkBackground
                     ),
                     shape = RoundedCornerShape(16.dp)
                 )
@@ -149,7 +195,9 @@ fun AuthScreen(
                         focusedBorderColor = PrimaryPurple,
                         unfocusedBorderColor = BorderSlate,
                         focusedTextColor = TextWhite,
-                        unfocusedTextColor = TextWhite
+                        unfocusedTextColor = TextWhite,
+                        focusedContainerColor = DarkBackground,
+                        unfocusedContainerColor = DarkBackground
                     ),
                     shape = RoundedCornerShape(16.dp)
                 )
@@ -161,7 +209,7 @@ fun AuthScreen(
                         if (isLoginMode) {
                             authViewModel.login(email, password)
                         } else {
-                            authViewModel.register(name, email, password)
+                            authViewModel.register(name, email, password, selectedRole)
                         }
                     },
                     modifier = Modifier

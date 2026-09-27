@@ -94,7 +94,7 @@ class AuthViewModel(application: Application) : AndroidViewModel(application) {
         }
     }
 
-    fun register(name: String, email: String, password: String) {
+    fun register(name: String, email: String, password: String, role: String) {
         if (name.isBlank() || email.isBlank() || password.isBlank()) {
             _uiState.value = _uiState.value.copy(error = "All fields are required")
             return
@@ -102,7 +102,7 @@ class AuthViewModel(application: Application) : AndroidViewModel(application) {
 
         viewModelScope.launch {
             _uiState.value = _uiState.value.copy(isLoading = true, error = null)
-            val result = repository.register(name.trim(), email.trim(), password.trim())
+            val result = repository.register(name.trim(), email.trim(), password.trim(), role)
 
             result.onSuccess { response ->
                 RetrofitClient.setToken(response.token)

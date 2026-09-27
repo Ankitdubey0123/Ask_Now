@@ -82,9 +82,9 @@ class ChatViewModel : ViewModel() {
         }
     }
 
-    fun sendMessage(receiverId: String, text: String) {
+    fun sendMessage(senderId: Int, receiverId: String, text: String) {
         if (text.isBlank()) return
-        val newMsg = ChatMessage(sender = "me", receiver = receiverId, message = text.trim())
+        val newMsg = ChatMessage(sender = senderId.toString(), receiver = receiverId, message = text.trim())
         val updated = _uiState.value.messages + newMsg
         _uiState.value = _uiState.value.copy(messages = updated)
     }

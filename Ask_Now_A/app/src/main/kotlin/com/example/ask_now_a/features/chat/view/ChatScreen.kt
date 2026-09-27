@@ -26,6 +26,7 @@ fun ChatScreen(
     chatViewModel: ChatViewModel,
     recipientId: String,
     recipientName: String,
+    currentUserId: Int = 0,
     onBack: () -> Unit
 ) {
     val uiState by chatViewModel.uiState.collectAsState()
@@ -56,28 +57,31 @@ fun ChatScreen(
                     .weight(1f)
                     .fillMaxWidth()
                     .padding(16.dp),
-                verticalArrangement = Arrangement.spacedBy(8.dp)
+                verticalArrangement = Arrangement.spacedBy(10.dp)
             ) {
                 items(uiState.messages) { msg ->
-                    val isMe = msg.sender == "me"
-                    Box(
+                    val isMe = msg.sender.equals(currentUserId.toString(), ignoreCase = true) || (currentUserId == 0 && msg.sender.equals("me", ignoreCase = true))
+                    Row(
                         modifier = Modifier.fillMaxWidth(),
-                        contentAlignment = if (isMe) Alignment.CenterEnd else Alignment.CenterStart
+                        horizontalArrangement = if (isMe) Arrangement.End else Arrangement.Start
                     ) {
-                        Box(
-                            modifier = Modifier
-                                .clip(
-                                    RoundedCornerShape(
-                                        topStart = 16.dp,
-                                        topEnd = 16.dp,
-                                        bottomStart = if (isMe) 16.dp else 4.dp,
-                                        bottomEnd = if (isMe) 4.dp else 16.dp
-                                    )
-                                )
-                                .background(if (isMe) PrimaryPurple else CardSurface)
-                                .padding(horizontal = 16.dp, vertical = 10.dp)
+                        Surface(
+                            shape = RoundedCornerShape(
+                                topStart = 16.dp,
+                                topEnd = 16.dp,
+                                bottomStart = if (isMe) 16.dp else 4.dp,
+                                bottomEnd = if (isMe) 4.dp else 16.dp
+                            ),
+                            color = if (isMe) PrimaryPurple else CardSurface,
+                            modifier = Modifier.widthIn(max = 280.dp)
                         ) {
-                            Text(msg.message, color = TextWhite)
+                            Column(modifier = Modifier.padding(horizontal = 16.dp, vertical = 10.dp)) {
+                                Text(
+                                    text = msg.message,
+                                    color = TextWhite,
+                                    style = MaterialTheme.typography.bodyLarge
+                                )
+                            }
                         }
                     }
                 }
@@ -115,7 +119,7 @@ fun ChatScreen(
                     IconButton(
                         onClick = {
                             if (messageText.isNotBlank()) {
-                                chatViewModel.sendMessage(recipientId, messageText)
+                                chatViewModel.sendMessage(currentUserId, recipientId, messageText)
                                 messageText = ""
                             }
                         },
