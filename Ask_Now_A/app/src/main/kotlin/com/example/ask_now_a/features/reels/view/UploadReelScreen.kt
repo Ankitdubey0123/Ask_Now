@@ -24,6 +24,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import androidx.core.content.FileProvider
 import com.example.ask_now_a.core.components.TagChip
 import com.example.ask_now_a.core.theme.*
 import com.example.ask_now_a.features.reels.viewmodel.ReelViewModel
@@ -44,10 +45,22 @@ fun UploadReelScreen(
     var selectedVideoUri by remember { mutableStateOf<Uri?>(null) }
     var selectedVideoName by remember { mutableStateOf<String?>(null) }
     var validationError by remember { mutableStateOf<String?>(null) }
+    var showSourceDialog by remember { mutableStateOf(false) }
+    var capturedFile by remember { mutableStateOf<File?>(null) }
 
     val categoryTags = listOf("#ProblemSolving", "#CourseAd", "#Solution", "#TipsAndTricks")
 
-    val videoPickerLauncher = rememberLauncherForActivityResult(
+    val cameraLauncher = rememberLauncherForActivityResult(
+        contract = ActivityResultContracts.CaptureVideo()
+    ) { success ->
+        if (success && capturedFile != null) {
+            selectedVideoUri = Uri.fromFile(capturedFile)
+            selectedVideoName = capturedFile?.name ?: "recorded_video.mp4"
+            validationError = null
+        }
+    }
+
+    val galleryLauncher = rememberLauncherForActivityResult(
         contract = ActivityResultContracts.GetContent()
     ) { uri: Uri? ->
         uri?.let {
@@ -61,6 +74,42 @@ fun UploadReelScreen(
         if (uiState.uploadSuccess) {
             onBack()
         }
+    }
+
+    if (showSourceDialog) {
+        AlertDialog(
+            onDismissRequest = { showSourceDialog = false },
+            title = { Text("Select Video Source", color = TextWhite, fontWeight = FontWeight.Bold) },
+            text = { Text("Record a new video directly using the device camera or choose an existing video from your gallery.", color = TextMuted) },
+            confirmButton = {
+                TextButton(
+                    onClick = {
+                        showSourceDialog = false
+                        val file = File(context.cacheDir, "reel_camera_${System.currentTimeMillis()}.mp4")
+                        capturedFile = file
+                        val uri = FileProvider.getUriForFile(
+                            context,
+                            "${context.packageName}.fileprovider",
+                            file
+                        )
+                        cameraLauncher.launch(uri)
+                    }
+                ) {
+                    Text("Record (Camera)", color = PrimaryPurple, fontWeight = FontWeight.Bold)
+                }
+            },
+            dismissButton = {
+                TextButton(
+                    onClick = {
+                        showSourceDialog = false
+                        galleryLauncher.launch("video/*")
+                    }
+                ) {
+                    Text("Choose Gallery", color = TextWhite)
+                }
+            },
+            containerColor = CardSurface
+        )
     }
 
     Scaffold(
@@ -93,7 +142,7 @@ fun UploadReelScreen(
                     .background(CardSurface)
                     .border(1.dp, PrimaryPurple.copy(alpha = 0.5f), RoundedCornerShape(20.dp))
                     .clickable {
-                        videoPickerLauncher.launch("video/*")
+                        showSourceDialog = true
                     },
                 contentAlignment = Alignment.Center
             ) {
@@ -101,7 +150,7 @@ fun UploadReelScreen(
                     Icon(Icons.Default.VideoCall, contentDescription = "Video", tint = PrimaryPurple, modifier = Modifier.size(54.dp))
                     Spacer(modifier = Modifier.height(8.dp))
                     Text(
-                        text = if (selectedVideoName != null) "Video Selected: $selectedVideoName" else "Tap to Select Video File (Gallery / Camera)",
+                        text = if (selectedVideoName != null) "Video Selected: $selectedVideoName" else "Tap to Record (Camera) or Choose Gallery",
                         color = if (selectedVideoName != null) AccentEmerald else TextMuted,
                         style = MaterialTheme.typography.bodyMedium
                     )
@@ -167,7 +216,7 @@ fun UploadReelScreen(
                     if (title.isBlank()) {
                         validationError = "Please enter a title for the reel"
                     } else if (selectedVideoUri == null) {
-                        validationError = "Please select a video file to upload"
+                        validationError = "Please select or record a video file"
                     } else {
                         validationError = null
                         val file = uriToFile(context, selectedVideoUri!!)

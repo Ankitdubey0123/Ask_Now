@@ -35,7 +35,6 @@
         android:label="AskNow"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:testOnly="true"
         android:theme="@style/Theme.AskNow"
         android:usesCleartextTraffic="true" >
         <activity
@@ -51,6 +50,15 @@
             </intent-filter>
         </activity>
 
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="com.example.ask_now_a.fileprovider"
+            android:exported="false"
+            android:grantUriPermissions="true" >
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths" />
+        </provider>
         <provider
             android:name="androidx.startup.InitializationProvider"
             android:authorities="com.example.ask_now_a.androidx-startup"

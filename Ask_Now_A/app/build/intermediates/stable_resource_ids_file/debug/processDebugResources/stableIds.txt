@@ -613,6 +613,7 @@ com.example.ask_now_a:id/exo_error_message = 0x7f070043
 com.example.ask_now_a:color/androidx_core_ripple_material_light = 0x7f030000
 com.example.ask_now_a:attr/resize_mode = 0x7f020039
 com.example.ask_now_a:attr/navGraph = 0x7f02002b
+com.example.ask_now_a:xml/file_paths = 0x7f0f0000
 com.example.ask_now_a:attr/fontProviderFetchTimeout = 0x7f02001c
 com.example.ask_now_a:attr/artwork_display_mode = 0x7f020006
 com.example.ask_now_a:id/accessibility_custom_action_29 = 0x7f070017

@@ -1,9 +1,20 @@
 -- Merging decision tree log ---
+provider#androidx.core.content.FileProvider
+INJECTED from D:\MY_APPS\Ask_Now\Ask_Now_A\app\src\main\AndroidManifest.xml:35:9-43:20
+	android:grantUriPermissions
+		ADDED from D:\MY_APPS\Ask_Now\Ask_Now_A\app\src\main\AndroidManifest.xml:39:13-47
+	android:authorities
+		INJECTED from D:\MY_APPS\Ask_Now\Ask_Now_A\app\src\main\AndroidManifest.xml
+		ADDED from D:\MY_APPS\Ask_Now\Ask_Now_A\app\src\main\AndroidManifest.xml:37:13-64
+	android:exported
+		ADDED from D:\MY_APPS\Ask_Now\Ask_Now_A\app\src\main\AndroidManifest.xml:38:13-37
+	android:name
+		ADDED from D:\MY_APPS\Ask_Now\Ask_Now_A\app\src\main\AndroidManifest.xml:36:13-62
 manifest
-ADDED from D:\MY_APPS\Ask_Now\Ask_Now_A\app\src\main\AndroidManifest.xml:2:1-37:12
-INJECTED from D:\MY_APPS\Ask_Now\Ask_Now_A\app\src\main\AndroidManifest.xml:2:1-37:12
-INJECTED from D:\MY_APPS\Ask_Now\Ask_Now_A\app\src\main\AndroidManifest.xml:2:1-37:12
-INJECTED from D:\MY_APPS\Ask_Now\Ask_Now_A\app\src\main\AndroidManifest.xml:2:1-37:12
+ADDED from D:\MY_APPS\Ask_Now\Ask_Now_A\app\src\main\AndroidManifest.xml:2:1-47:12
+INJECTED from D:\MY_APPS\Ask_Now\Ask_Now_A\app\src\main\AndroidManifest.xml:2:1-47:12
+INJECTED from D:\MY_APPS\Ask_Now\Ask_Now_A\app\src\main\AndroidManifest.xml:2:1-47:12
+INJECTED from D:\MY_APPS\Ask_Now\Ask_Now_A\app\src\main\AndroidManifest.xml:2:1-47:12
 MERGED from [androidx.media3:media3-ui:1.2.1] C:\Users\ACER\.gradle\caches\9.3.0\transforms\fd5da97c9daf14d1dc7777445c8a3280\workspace\transformed\media3-ui-1.2.1\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.media3:media3-extractor:1.2.1] C:\Users\ACER\.gradle\caches\9.3.0\transforms\b8c2124882e7589dd026ea92069416d2\workspace\transformed\media3-extractor-1.2.1\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.media3:media3-container:1.2.1] C:\Users\ACER\.gradle\caches\9.3.0\transforms\c4dbb9b65a6536064bda4e14c7208cfc\workspace\transformed\media3-container-1.2.1\AndroidManifest.xml:17:1-22:12
@@ -128,8 +139,8 @@ ADDED from D:\MY_APPS\Ask_Now\Ask_Now_A\app\src\main\AndroidManifest.xml:12:5-75
 	android:name
 		ADDED from D:\MY_APPS\Ask_Now\Ask_Now_A\app\src\main\AndroidManifest.xml:12:22-72
 application
-ADDED from D:\MY_APPS\Ask_Now\Ask_Now_A\app\src\main\AndroidManifest.xml:14:5-35:19
-INJECTED from D:\MY_APPS\Ask_Now\Ask_Now_A\app\src\main\AndroidManifest.xml:14:5-35:19
+ADDED from D:\MY_APPS\Ask_Now\Ask_Now_A\app\src\main\AndroidManifest.xml:14:5-45:19
+INJECTED from D:\MY_APPS\Ask_Now\Ask_Now_A\app\src\main\AndroidManifest.xml:14:5-45:19
 MERGED from [androidx.emoji2:emoji2:1.3.0] C:\Users\ACER\.gradle\caches\9.3.0\transforms\d33654d5932e3699ed32b5c5a3139caa\workspace\transformed\emoji2-1.3.0\AndroidManifest.xml:23:5-33:19
 MERGED from [androidx.emoji2:emoji2:1.3.0] C:\Users\ACER\.gradle\caches\9.3.0\transforms\d33654d5932e3699ed32b5c5a3139caa\workspace\transformed\emoji2-1.3.0\AndroidManifest.xml:23:5-33:19
 MERGED from [androidx.lifecycle:lifecycle-process:2.7.0] C:\Users\ACER\.gradle\caches\9.3.0\transforms\4a01216c392676223fc33b94fef55e44\workspace\transformed\lifecycle-process-2.7.0\AndroidManifest.xml:23:5-33:19
@@ -186,6 +197,12 @@ category#android.intent.category.LAUNCHER
 ADDED from D:\MY_APPS\Ask_Now\Ask_Now_A\app\src\main\AndroidManifest.xml:31:17-77
 	android:name
 		ADDED from D:\MY_APPS\Ask_Now\Ask_Now_A\app\src\main\AndroidManifest.xml:31:27-74
+meta-data#android.support.FILE_PROVIDER_PATHS
+ADDED from D:\MY_APPS\Ask_Now\Ask_Now_A\app\src\main\AndroidManifest.xml:40:13-42:54
+	android:resource
+		ADDED from D:\MY_APPS\Ask_Now\Ask_Now_A\app\src\main\AndroidManifest.xml:42:17-51
+	android:name
+		ADDED from D:\MY_APPS\Ask_Now\Ask_Now_A\app\src\main\AndroidManifest.xml:41:17-67
 uses-sdk
 INJECTED from D:\MY_APPS\Ask_Now\Ask_Now_A\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from D:\MY_APPS\Ask_Now\Ask_Now_A\app\src\main\AndroidManifest.xml

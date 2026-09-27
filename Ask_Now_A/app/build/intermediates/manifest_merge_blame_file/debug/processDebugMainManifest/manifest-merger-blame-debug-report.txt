@@ -51,7 +51,7 @@
 27-->[androidx.core:core:1.12.0] C:\Users\ACER\.gradle\caches\9.3.0\transforms\3e84e7af4e660d9d34a3462ae6e1c6fd\workspace\transformed\core-1.12.0\AndroidManifest.xml:26:22-94
 28
 29    <application
-29-->D:\MY_APPS\Ask_Now\Ask_Now_A\app\src\main\AndroidManifest.xml:14:5-35:19
+29-->D:\MY_APPS\Ask_Now\Ask_Now_A\app\src\main\AndroidManifest.xml:14:5-45:19
 30        android:allowBackup="true"
 30-->D:\MY_APPS\Ask_Now\Ask_Now_A\app\src\main\AndroidManifest.xml:15:9-35
 31        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
@@ -66,113 +66,128 @@
 36-->D:\MY_APPS\Ask_Now\Ask_Now_A\app\src\main\AndroidManifest.xml:18:9-54
 37        android:supportsRtl="true"
 37-->D:\MY_APPS\Ask_Now\Ask_Now_A\app\src\main\AndroidManifest.xml:19:9-35
-38        android:testOnly="true"
-39        android:theme="@style/Theme.AskNow"
-39-->D:\MY_APPS\Ask_Now\Ask_Now_A\app\src\main\AndroidManifest.xml:21:9-44
-40        android:usesCleartextTraffic="true" >
-40-->D:\MY_APPS\Ask_Now\Ask_Now_A\app\src\main\AndroidManifest.xml:20:9-44
-41        <activity
-41-->D:\MY_APPS\Ask_Now\Ask_Now_A\app\src\main\AndroidManifest.xml:23:9-33:20
-42            android:name="com.example.ask_now_a.MainActivity"
-42-->D:\MY_APPS\Ask_Now\Ask_Now_A\app\src\main\AndroidManifest.xml:24:13-62
-43            android:exported="true"
-43-->D:\MY_APPS\Ask_Now\Ask_Now_A\app\src\main\AndroidManifest.xml:25:13-36
-44            android:label="AskNow"
-44-->D:\MY_APPS\Ask_Now\Ask_Now_A\app\src\main\AndroidManifest.xml:26:13-35
-45            android:theme="@style/Theme.AskNow"
-45-->D:\MY_APPS\Ask_Now\Ask_Now_A\app\src\main\AndroidManifest.xml:27:13-48
-46            android:windowSoftInputMode="adjustResize" >
-46-->D:\MY_APPS\Ask_Now\Ask_Now_A\app\src\main\AndroidManifest.xml:28:13-55
-47            <intent-filter>
-47-->D:\MY_APPS\Ask_Now\Ask_Now_A\app\src\main\AndroidManifest.xml:29:13-32:29
-48                <action android:name="android.intent.action.MAIN" />
-48-->D:\MY_APPS\Ask_Now\Ask_Now_A\app\src\main\AndroidManifest.xml:30:17-69
-48-->D:\MY_APPS\Ask_Now\Ask_Now_A\app\src\main\AndroidManifest.xml:30:25-66
-49
-50                <category android:name="android.intent.category.LAUNCHER" />
-50-->D:\MY_APPS\Ask_Now\Ask_Now_A\app\src\main\AndroidManifest.xml:31:17-77
-50-->D:\MY_APPS\Ask_Now\Ask_Now_A\app\src\main\AndroidManifest.xml:31:27-74
-51            </intent-filter>
-52        </activity>
-53
-54        <provider
-54-->[androidx.emoji2:emoji2:1.3.0] C:\Users\ACER\.gradle\caches\9.3.0\transforms\d33654d5932e3699ed32b5c5a3139caa\workspace\transformed\emoji2-1.3.0\AndroidManifest.xml:24:9-32:20
-55            android:name="androidx.startup.InitializationProvider"
-55-->[androidx.emoji2:emoji2:1.3.0] C:\Users\ACER\.gradle\caches\9.3.0\transforms\d33654d5932e3699ed32b5c5a3139caa\workspace\transformed\emoji2-1.3.0\AndroidManifest.xml:25:13-67
-56            android:authorities="com.example.ask_now_a.androidx-startup"
-56-->[androidx.emoji2:emoji2:1.3.0] C:\Users\ACER\.gradle\caches\9.3.0\transforms\d33654d5932e3699ed32b5c5a3139caa\workspace\transformed\emoji2-1.3.0\AndroidManifest.xml:26:13-68
-57            android:exported="false" >
-57-->[androidx.emoji2:emoji2:1.3.0] C:\Users\ACER\.gradle\caches\9.3.0\transforms\d33654d5932e3699ed32b5c5a3139caa\workspace\transformed\emoji2-1.3.0\AndroidManifest.xml:27:13-37
+38        android:theme="@style/Theme.AskNow"
+38-->D:\MY_APPS\Ask_Now\Ask_Now_A\app\src\main\AndroidManifest.xml:21:9-44
+39        android:usesCleartextTraffic="true" >
+39-->D:\MY_APPS\Ask_Now\Ask_Now_A\app\src\main\AndroidManifest.xml:20:9-44
+40        <activity
+40-->D:\MY_APPS\Ask_Now\Ask_Now_A\app\src\main\AndroidManifest.xml:23:9-33:20
+41            android:name="com.example.ask_now_a.MainActivity"
+41-->D:\MY_APPS\Ask_Now\Ask_Now_A\app\src\main\AndroidManifest.xml:24:13-62
+42            android:exported="true"
+42-->D:\MY_APPS\Ask_Now\Ask_Now_A\app\src\main\AndroidManifest.xml:25:13-36
+43            android:label="AskNow"
+43-->D:\MY_APPS\Ask_Now\Ask_Now_A\app\src\main\AndroidManifest.xml:26:13-35
+44            android:theme="@style/Theme.AskNow"
+44-->D:\MY_APPS\Ask_Now\Ask_Now_A\app\src\main\AndroidManifest.xml:27:13-48
+45            android:windowSoftInputMode="adjustResize" >
+45-->D:\MY_APPS\Ask_Now\Ask_Now_A\app\src\main\AndroidManifest.xml:28:13-55
+46            <intent-filter>
+46-->D:\MY_APPS\Ask_Now\Ask_Now_A\app\src\main\AndroidManifest.xml:29:13-32:29
+47                <action android:name="android.intent.action.MAIN" />
+47-->D:\MY_APPS\Ask_Now\Ask_Now_A\app\src\main\AndroidManifest.xml:30:17-69
+47-->D:\MY_APPS\Ask_Now\Ask_Now_A\app\src\main\AndroidManifest.xml:30:25-66
+48
+49                <category android:name="android.intent.category.LAUNCHER" />
+49-->D:\MY_APPS\Ask_Now\Ask_Now_A\app\src\main\AndroidManifest.xml:31:17-77
+49-->D:\MY_APPS\Ask_Now\Ask_Now_A\app\src\main\AndroidManifest.xml:31:27-74
+50            </intent-filter>
+51        </activity>
+52
+53        <provider
+54            android:name="androidx.core.content.FileProvider"
+54-->D:\MY_APPS\Ask_Now\Ask_Now_A\app\src\main\AndroidManifest.xml:36:13-62
+55            android:authorities="com.example.ask_now_a.fileprovider"
+55-->D:\MY_APPS\Ask_Now\Ask_Now_A\app\src\main\AndroidManifest.xml:37:13-64
+56            android:exported="false"
+56-->D:\MY_APPS\Ask_Now\Ask_Now_A\app\src\main\AndroidManifest.xml:38:13-37
+57            android:grantUriPermissions="true" >
+57-->D:\MY_APPS\Ask_Now\Ask_Now_A\app\src\main\AndroidManifest.xml:39:13-47
 58            <meta-data
-58-->[androidx.emoji2:emoji2:1.3.0] C:\Users\ACER\.gradle\caches\9.3.0\transforms\d33654d5932e3699ed32b5c5a3139caa\workspace\transformed\emoji2-1.3.0\AndroidManifest.xml:29:13-31:52
-59                android:name="androidx.emoji2.text.EmojiCompatInitializer"
-59-->[androidx.emoji2:emoji2:1.3.0] C:\Users\ACER\.gradle\caches\9.3.0\transforms\d33654d5932e3699ed32b5c5a3139caa\workspace\transformed\emoji2-1.3.0\AndroidManifest.xml:30:17-75
-60                android:value="androidx.startup" />
-60-->[androidx.emoji2:emoji2:1.3.0] C:\Users\ACER\.gradle\caches\9.3.0\transforms\d33654d5932e3699ed32b5c5a3139caa\workspace\transformed\emoji2-1.3.0\AndroidManifest.xml:31:17-49
-61            <meta-data
-61-->[androidx.lifecycle:lifecycle-process:2.7.0] C:\Users\ACER\.gradle\caches\9.3.0\transforms\4a01216c392676223fc33b94fef55e44\workspace\transformed\lifecycle-process-2.7.0\AndroidManifest.xml:29:13-31:52
-62                android:name="androidx.lifecycle.ProcessLifecycleInitializer"
-62-->[androidx.lifecycle:lifecycle-process:2.7.0] C:\Users\ACER\.gradle\caches\9.3.0\transforms\4a01216c392676223fc33b94fef55e44\workspace\transformed\lifecycle-process-2.7.0\AndroidManifest.xml:30:17-78
-63                android:value="androidx.startup" />
-63-->[androidx.lifecycle:lifecycle-process:2.7.0] C:\Users\ACER\.gradle\caches\9.3.0\transforms\4a01216c392676223fc33b94fef55e44\workspace\transformed\lifecycle-process-2.7.0\AndroidManifest.xml:31:17-49
-64            <meta-data
-64-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\ACER\.gradle\caches\9.3.0\transforms\7505797831c00a22f684a8778761b142\workspace\transformed\profileinstaller-1.3.1\AndroidManifest.xml:29:13-31:52
-65                android:name="androidx.profileinstaller.ProfileInstallerInitializer"
-65-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\ACER\.gradle\caches\9.3.0\transforms\7505797831c00a22f684a8778761b142\workspace\transformed\profileinstaller-1.3.1\AndroidManifest.xml:30:17-85
-66                android:value="androidx.startup" />
-66-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\ACER\.gradle\caches\9.3.0\transforms\7505797831c00a22f684a8778761b142\workspace\transformed\profileinstaller-1.3.1\AndroidManifest.xml:31:17-49
-67        </provider>
-68
-69        <activity
-69-->[androidx.compose.ui:ui-test-manifest:1.6.2] C:\Users\ACER\.gradle\caches\9.3.0\transforms\ad13ca95ec972e3dbf40c8d76d19d77f\workspace\transformed\ui-test-manifest-1.6.2\AndroidManifest.xml:23:9-25:39
-70            android:name="androidx.activity.ComponentActivity"
-70-->[androidx.compose.ui:ui-test-manifest:1.6.2] C:\Users\ACER\.gradle\caches\9.3.0\transforms\ad13ca95ec972e3dbf40c8d76d19d77f\workspace\transformed\ui-test-manifest-1.6.2\AndroidManifest.xml:24:13-63
-71            android:exported="true" />
-71-->[androidx.compose.ui:ui-test-manifest:1.6.2] C:\Users\ACER\.gradle\caches\9.3.0\transforms\ad13ca95ec972e3dbf40c8d76d19d77f\workspace\transformed\ui-test-manifest-1.6.2\AndroidManifest.xml:25:13-36
-72        <activity
-72-->[androidx.compose.ui:ui-tooling-android:1.6.2] C:\Users\ACER\.gradle\caches\9.3.0\transforms\b95c056e950276c975f8676aab58c643\workspace\transformed\ui-tooling-release\AndroidManifest.xml:23:9-25:39
-73            android:name="androidx.compose.ui.tooling.PreviewActivity"
-73-->[androidx.compose.ui:ui-tooling-android:1.6.2] C:\Users\ACER\.gradle\caches\9.3.0\transforms\b95c056e950276c975f8676aab58c643\workspace\transformed\ui-tooling-release\AndroidManifest.xml:24:13-71
-74            android:exported="true" />
-74-->[androidx.compose.ui:ui-tooling-android:1.6.2] C:\Users\ACER\.gradle\caches\9.3.0\transforms\b95c056e950276c975f8676aab58c643\workspace\transformed\ui-tooling-release\AndroidManifest.xml:25:13-36
-75
-76        <receiver
-76-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\ACER\.gradle\caches\9.3.0\transforms\7505797831c00a22f684a8778761b142\workspace\transformed\profileinstaller-1.3.1\AndroidManifest.xml:34:9-52:20
-77            android:name="androidx.profileinstaller.ProfileInstallReceiver"
-77-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\ACER\.gradle\caches\9.3.0\transforms\7505797831c00a22f684a8778761b142\workspace\transformed\profileinstaller-1.3.1\AndroidManifest.xml:35:13-76
-78            android:directBootAware="false"
-78-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\ACER\.gradle\caches\9.3.0\transforms\7505797831c00a22f684a8778761b142\workspace\transformed\profileinstaller-1.3.1\AndroidManifest.xml:36:13-44
-79            android:enabled="true"
-79-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\ACER\.gradle\caches\9.3.0\transforms\7505797831c00a22f684a8778761b142\workspace\transformed\profileinstaller-1.3.1\AndroidManifest.xml:37:13-35
-80            android:exported="true"
-80-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\ACER\.gradle\caches\9.3.0\transforms\7505797831c00a22f684a8778761b142\workspace\transformed\profileinstaller-1.3.1\AndroidManifest.xml:38:13-36
-81            android:permission="android.permission.DUMP" >
-81-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\ACER\.gradle\caches\9.3.0\transforms\7505797831c00a22f684a8778761b142\workspace\transformed\profileinstaller-1.3.1\AndroidManifest.xml:39:13-57
-82            <intent-filter>
-82-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\ACER\.gradle\caches\9.3.0\transforms\7505797831c00a22f684a8778761b142\workspace\transformed\profileinstaller-1.3.1\AndroidManifest.xml:40:13-42:29
-83                <action android:name="androidx.profileinstaller.action.INSTALL_PROFILE" />
-83-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\ACER\.gradle\caches\9.3.0\transforms\7505797831c00a22f684a8778761b142\workspace\transformed\profileinstaller-1.3.1\AndroidManifest.xml:41:17-91
-83-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\ACER\.gradle\caches\9.3.0\transforms\7505797831c00a22f684a8778761b142\workspace\transformed\profileinstaller-1.3.1\AndroidManifest.xml:41:25-88
-84            </intent-filter>
-85            <intent-filter>
-85-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\ACER\.gradle\caches\9.3.0\transforms\7505797831c00a22f684a8778761b142\workspace\transformed\profileinstaller-1.3.1\AndroidManifest.xml:43:13-45:29
-86                <action android:name="androidx.profileinstaller.action.SKIP_FILE" />
-86-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\ACER\.gradle\caches\9.3.0\transforms\7505797831c00a22f684a8778761b142\workspace\transformed\profileinstaller-1.3.1\AndroidManifest.xml:44:17-85
-86-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\ACER\.gradle\caches\9.3.0\transforms\7505797831c00a22f684a8778761b142\workspace\transformed\profileinstaller-1.3.1\AndroidManifest.xml:44:25-82
-87            </intent-filter>
-88            <intent-filter>
-88-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\ACER\.gradle\caches\9.3.0\transforms\7505797831c00a22f684a8778761b142\workspace\transformed\profileinstaller-1.3.1\AndroidManifest.xml:46:13-48:29
-89                <action android:name="androidx.profileinstaller.action.SAVE_PROFILE" />
-89-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\ACER\.gradle\caches\9.3.0\transforms\7505797831c00a22f684a8778761b142\workspace\transformed\profileinstaller-1.3.1\AndroidManifest.xml:47:17-88
-89-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\ACER\.gradle\caches\9.3.0\transforms\7505797831c00a22f684a8778761b142\workspace\transformed\profileinstaller-1.3.1\AndroidManifest.xml:47:25-85
-90            </intent-filter>
-91            <intent-filter>
-91-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\ACER\.gradle\caches\9.3.0\transforms\7505797831c00a22f684a8778761b142\workspace\transformed\profileinstaller-1.3.1\AndroidManifest.xml:49:13-51:29
-92                <action android:name="androidx.profileinstaller.action.BENCHMARK_OPERATION" />
-92-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\ACER\.gradle\caches\9.3.0\transforms\7505797831c00a22f684a8778761b142\workspace\transformed\profileinstaller-1.3.1\AndroidManifest.xml:50:17-95
-92-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\ACER\.gradle\caches\9.3.0\transforms\7505797831c00a22f684a8778761b142\workspace\transformed\profileinstaller-1.3.1\AndroidManifest.xml:50:25-92
-93            </intent-filter>
-94        </receiver>
-95    </application>
-96
-97</manifest>
+58-->D:\MY_APPS\Ask_Now\Ask_Now_A\app\src\main\AndroidManifest.xml:40:13-42:54
+59                android:name="android.support.FILE_PROVIDER_PATHS"
+59-->D:\MY_APPS\Ask_Now\Ask_Now_A\app\src\main\AndroidManifest.xml:41:17-67
+60                android:resource="@xml/file_paths" />
+60-->D:\MY_APPS\Ask_Now\Ask_Now_A\app\src\main\AndroidManifest.xml:42:17-51
+61        </provider>
+62        <provider
+62-->[androidx.emoji2:emoji2:1.3.0] C:\Users\ACER\.gradle\caches\9.3.0\transforms\d33654d5932e3699ed32b5c5a3139caa\workspace\transformed\emoji2-1.3.0\AndroidManifest.xml:24:9-32:20
+63            android:name="androidx.startup.InitializationProvider"
+63-->[androidx.emoji2:emoji2:1.3.0] C:\Users\ACER\.gradle\caches\9.3.0\transforms\d33654d5932e3699ed32b5c5a3139caa\workspace\transformed\emoji2-1.3.0\AndroidManifest.xml:25:13-67
+64            android:authorities="com.example.ask_now_a.androidx-startup"
+64-->[androidx.emoji2:emoji2:1.3.0] C:\Users\ACER\.gradle\caches\9.3.0\transforms\d33654d5932e3699ed32b5c5a3139caa\workspace\transformed\emoji2-1.3.0\AndroidManifest.xml:26:13-68
+65            android:exported="false" >
+65-->[androidx.emoji2:emoji2:1.3.0] C:\Users\ACER\.gradle\caches\9.3.0\transforms\d33654d5932e3699ed32b5c5a3139caa\workspace\transformed\emoji2-1.3.0\AndroidManifest.xml:27:13-37
+66            <meta-data
+66-->[androidx.emoji2:emoji2:1.3.0] C:\Users\ACER\.gradle\caches\9.3.0\transforms\d33654d5932e3699ed32b5c5a3139caa\workspace\transformed\emoji2-1.3.0\AndroidManifest.xml:29:13-31:52
+67                android:name="androidx.emoji2.text.EmojiCompatInitializer"
+67-->[androidx.emoji2:emoji2:1.3.0] C:\Users\ACER\.gradle\caches\9.3.0\transforms\d33654d5932e3699ed32b5c5a3139caa\workspace\transformed\emoji2-1.3.0\AndroidManifest.xml:30:17-75
+68                android:value="androidx.startup" />
+68-->[androidx.emoji2:emoji2:1.3.0] C:\Users\ACER\.gradle\caches\9.3.0\transforms\d33654d5932e3699ed32b5c5a3139caa\workspace\transformed\emoji2-1.3.0\AndroidManifest.xml:31:17-49
+69            <meta-data
+69-->[androidx.lifecycle:lifecycle-process:2.7.0] C:\Users\ACER\.gradle\caches\9.3.0\transforms\4a01216c392676223fc33b94fef55e44\workspace\transformed\lifecycle-process-2.7.0\AndroidManifest.xml:29:13-31:52
+70                android:name="androidx.lifecycle.ProcessLifecycleInitializer"
+70-->[androidx.lifecycle:lifecycle-process:2.7.0] C:\Users\ACER\.gradle\caches\9.3.0\transforms\4a01216c392676223fc33b94fef55e44\workspace\transformed\lifecycle-process-2.7.0\AndroidManifest.xml:30:17-78
+71                android:value="androidx.startup" />
+71-->[androidx.lifecycle:lifecycle-process:2.7.0] C:\Users\ACER\.gradle\caches\9.3.0\transforms\4a01216c392676223fc33b94fef55e44\workspace\transformed\lifecycle-process-2.7.0\AndroidManifest.xml:31:17-49
+72            <meta-data
+72-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\ACER\.gradle\caches\9.3.0\transforms\7505797831c00a22f684a8778761b142\workspace\transformed\profileinstaller-1.3.1\AndroidManifest.xml:29:13-31:52
+73                android:name="androidx.profileinstaller.ProfileInstallerInitializer"
+73-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\ACER\.gradle\caches\9.3.0\transforms\7505797831c00a22f684a8778761b142\workspace\transformed\profileinstaller-1.3.1\AndroidManifest.xml:30:17-85
+74                android:value="androidx.startup" />
+74-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\ACER\.gradle\caches\9.3.0\transforms\7505797831c00a22f684a8778761b142\workspace\transformed\profileinstaller-1.3.1\AndroidManifest.xml:31:17-49
+75        </provider>
+76
+77        <activity
+77-->[androidx.compose.ui:ui-test-manifest:1.6.2] C:\Users\ACER\.gradle\caches\9.3.0\transforms\ad13ca95ec972e3dbf40c8d76d19d77f\workspace\transformed\ui-test-manifest-1.6.2\AndroidManifest.xml:23:9-25:39
+78            android:name="androidx.activity.ComponentActivity"
+78-->[androidx.compose.ui:ui-test-manifest:1.6.2] C:\Users\ACER\.gradle\caches\9.3.0\transforms\ad13ca95ec972e3dbf40c8d76d19d77f\workspace\transformed\ui-test-manifest-1.6.2\AndroidManifest.xml:24:13-63
+79            android:exported="true" />
+79-->[androidx.compose.ui:ui-test-manifest:1.6.2] C:\Users\ACER\.gradle\caches\9.3.0\transforms\ad13ca95ec972e3dbf40c8d76d19d77f\workspace\transformed\ui-test-manifest-1.6.2\AndroidManifest.xml:25:13-36
+80        <activity
+80-->[androidx.compose.ui:ui-tooling-android:1.6.2] C:\Users\ACER\.gradle\caches\9.3.0\transforms\b95c056e950276c975f8676aab58c643\workspace\transformed\ui-tooling-release\AndroidManifest.xml:23:9-25:39
+81            android:name="androidx.compose.ui.tooling.PreviewActivity"
+81-->[androidx.compose.ui:ui-tooling-android:1.6.2] C:\Users\ACER\.gradle\caches\9.3.0\transforms\b95c056e950276c975f8676aab58c643\workspace\transformed\ui-tooling-release\AndroidManifest.xml:24:13-71
+82            android:exported="true" />
+82-->[androidx.compose.ui:ui-tooling-android:1.6.2] C:\Users\ACER\.gradle\caches\9.3.0\transforms\b95c056e950276c975f8676aab58c643\workspace\transformed\ui-tooling-release\AndroidManifest.xml:25:13-36
+83
+84        <receiver
+84-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\ACER\.gradle\caches\9.3.0\transforms\7505797831c00a22f684a8778761b142\workspace\transformed\profileinstaller-1.3.1\AndroidManifest.xml:34:9-52:20
+85            android:name="androidx.profileinstaller.ProfileInstallReceiver"
+85-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\ACER\.gradle\caches\9.3.0\transforms\7505797831c00a22f684a8778761b142\workspace\transformed\profileinstaller-1.3.1\AndroidManifest.xml:35:13-76
+86            android:directBootAware="false"
+86-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\ACER\.gradle\caches\9.3.0\transforms\7505797831c00a22f684a8778761b142\workspace\transformed\profileinstaller-1.3.1\AndroidManifest.xml:36:13-44
+87            android:enabled="true"
+87-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\ACER\.gradle\caches\9.3.0\transforms\7505797831c00a22f684a8778761b142\workspace\transformed\profileinstaller-1.3.1\AndroidManifest.xml:37:13-35
+88            android:exported="true"
+88-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\ACER\.gradle\caches\9.3.0\transforms\7505797831c00a22f684a8778761b142\workspace\transformed\profileinstaller-1.3.1\AndroidManifest.xml:38:13-36
+89            android:permission="android.permission.DUMP" >
+89-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\ACER\.gradle\caches\9.3.0\transforms\7505797831c00a22f684a8778761b142\workspace\transformed\profileinstaller-1.3.1\AndroidManifest.xml:39:13-57
+90            <intent-filter>
+90-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\ACER\.gradle\caches\9.3.0\transforms\7505797831c00a22f684a8778761b142\workspace\transformed\profileinstaller-1.3.1\AndroidManifest.xml:40:13-42:29
+91                <action android:name="androidx.profileinstaller.action.INSTALL_PROFILE" />
+91-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\ACER\.gradle\caches\9.3.0\transforms\7505797831c00a22f684a8778761b142\workspace\transformed\profileinstaller-1.3.1\AndroidManifest.xml:41:17-91
+91-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\ACER\.gradle\caches\9.3.0\transforms\7505797831c00a22f684a8778761b142\workspace\transformed\profileinstaller-1.3.1\AndroidManifest.xml:41:25-88
+92            </intent-filter>
+93            <intent-filter>
+93-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\ACER\.gradle\caches\9.3.0\transforms\7505797831c00a22f684a8778761b142\workspace\transformed\profileinstaller-1.3.1\AndroidManifest.xml:43:13-45:29
+94                <action android:name="androidx.profileinstaller.action.SKIP_FILE" />
+94-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\ACER\.gradle\caches\9.3.0\transforms\7505797831c00a22f684a8778761b142\workspace\transformed\profileinstaller-1.3.1\AndroidManifest.xml:44:17-85
+94-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\ACER\.gradle\caches\9.3.0\transforms\7505797831c00a22f684a8778761b142\workspace\transformed\profileinstaller-1.3.1\AndroidManifest.xml:44:25-82
+95            </intent-filter>
+96            <intent-filter>
+96-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\ACER\.gradle\caches\9.3.0\transforms\7505797831c00a22f684a8778761b142\workspace\transformed\profileinstaller-1.3.1\AndroidManifest.xml:46:13-48:29
+97                <action android:name="androidx.profileinstaller.action.SAVE_PROFILE" />
+97-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\ACER\.gradle\caches\9.3.0\transforms\7505797831c00a22f684a8778761b142\workspace\transformed\profileinstaller-1.3.1\AndroidManifest.xml:47:17-88
+97-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\ACER\.gradle\caches\9.3.0\transforms\7505797831c00a22f684a8778761b142\workspace\transformed\profileinstaller-1.3.1\AndroidManifest.xml:47:25-85
+98            </intent-filter>
+99            <intent-filter>
+99-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\ACER\.gradle\caches\9.3.0\transforms\7505797831c00a22f684a8778761b142\workspace\transformed\profileinstaller-1.3.1\AndroidManifest.xml:49:13-51:29
+100                <action android:name="androidx.profileinstaller.action.BENCHMARK_OPERATION" />
+100-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\ACER\.gradle\caches\9.3.0\transforms\7505797831c00a22f684a8778761b142\workspace\transformed\profileinstaller-1.3.1\AndroidManifest.xml:50:17-95
+100-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\ACER\.gradle\caches\9.3.0\transforms\7505797831c00a22f684a8778761b142\workspace\transformed\profileinstaller-1.3.1\AndroidManifest.xml:50:25-92
+101            </intent-filter>
+102        </receiver>
+103    </application>
+104
+105</manifest>
