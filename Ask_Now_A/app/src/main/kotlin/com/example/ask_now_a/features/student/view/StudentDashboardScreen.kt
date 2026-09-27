@@ -14,6 +14,7 @@ import com.example.ask_now_a.core.components.AppScaffold
 import com.example.ask_now_a.core.components.DrawerMenuItem
 import com.example.ask_now_a.core.components.NavigationTabItem
 import com.example.ask_now_a.features.session.model.SessionModel
+import com.example.ask_now_a.features.session.viewmodel.SessionViewModel
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -21,6 +22,7 @@ fun StudentDashboardScreen(
     name: String,
     email: String,
     sessions: List<SessionModel>,
+    sessionViewModel: SessionViewModel,
     onOpenChat: () -> Unit,
     onNavigateToAiTutor: () -> Unit,
     onNavigateToReels: () -> Unit,
@@ -59,13 +61,13 @@ fun StudentDashboardScreen(
                     onNavigateToAiTutor = onNavigateToAiTutor,
                     onNavigateToReels = onNavigateToReels,
                     onNavigateToLiveClass = {
-                        val dummySession = SessionModel(1, "Live Physics Class", "Interactive problem walkthrough", "", "LIVE", "John Doe")
-                        onNavigateToLiveClass(dummySession)
+                        selectedTab = 1 // Switch to Sessions tab to view active live classes
                     }
                 )
                 1 -> StudentSessionsTab(
                     sessions = sessions,
-                    onJoinSession = onNavigateToLiveClass
+                    onJoinSession = onNavigateToLiveClass,
+                    onRefresh = { sessionViewModel.fetchLiveSessions() }
                 )
                 2 -> StudentProfileTab(
                     name = name,

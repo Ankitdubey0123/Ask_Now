@@ -78,4 +78,11 @@ class SessionViewModel : ViewModel() {
             fetchLiveSessions()
         }
     }
+
+    fun joinSession(sessionId: Int) {
+        viewModelScope.launch {
+            repository.joinSession(sessionId)
+            fetchLiveSessions()
+        }
+    }
 }

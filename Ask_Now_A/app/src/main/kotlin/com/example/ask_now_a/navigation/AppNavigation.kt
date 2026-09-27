@@ -76,10 +76,12 @@ fun AppNavigation(
                 name = authState.name ?: "Student",
                 email = authState.email ?: "student@email.com",
                 sessions = sessionState.liveSessions,
+                sessionViewModel = sessionViewModel,
                 onOpenChat = { navController.navigate("chat_list") },
                 onNavigateToAiTutor = { navController.navigate("ai_tutor") },
                 onNavigateToReels = { navController.navigate("reels_feed") },
                 onNavigateToLiveClass = { session ->
+                    sessionViewModel.joinSession(session.id)
                     navController.navigate("live_call/${session.title}")
                 },
                 onLogout = {
